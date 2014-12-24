@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--application level settings-->
+    <context-param>
+        <param-name>AppLevelParam</param-name>
+        <param-value>App level parameter</param-value>
+    </context-param>
+
+    <!--servlet level settings-->
+    <servlet>
+        <servlet-name>HelloworldServlet</servlet-name>
+        <servlet-class>io.nosqlyessql.HelloworldServlet</servlet-class>
+        <init-param>
+            <!--This will override the annotation settings-->
+            <param-name>ProductName</param-name>
+            <param-value>Web XML values override values in annotation</param-value>
+        </init-param>
+    </servlet>
+
+    <!--this messes up the "open in browser" function in Intellij, its best practice to either use annotations or web.xml for url patterns-->
+    <servlet-mapping>
+        <!--The url pattern here will override the annotations-->
+        <servlet-name>HelloworldServlet</servlet-name>
+        <url-pattern>/helloworld</url-pattern>
+    </servlet-mapping>
+    
+</web-app>
